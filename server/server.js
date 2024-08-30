@@ -70,7 +70,7 @@ app.post('/signup', upload.single('resume'), async (req, res) => {
         });
 
         await newUser.save();
-        res.redirect('/success.html');
+        res.redirect('index.html');
     } catch (err) {
         console.error('Error saving user:', err);
         res.status(500).send('Internal server error');

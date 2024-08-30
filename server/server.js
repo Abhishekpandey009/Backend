@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
 require('dotenv').config(); // Ensure dotenv is required to load environment variables
+const cors = require('cors'); // Import the cors package
 
 const app = express();
 const port = 3001;
@@ -13,6 +14,11 @@ app.use('/uploads', express.static('uploads'));
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware to handle CORS
+app.use(cors({
+    origin: 'https://frontend-2drz.onrender.com' // Allow requests from your frontend URL
+}));
 
 // Multer configuration for file uploads
 const storage = multer.diskStorage({

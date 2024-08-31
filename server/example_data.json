@@ -1,0 +1,14 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "1234567890",
+        "resume": "path_to_resume.pdf"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "phone": "0987654321",
+        "resume": "path_to_resume2.pdf"
+    }
+]

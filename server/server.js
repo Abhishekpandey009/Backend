@@ -6,7 +6,7 @@ require('dotenv').config(); // Ensure dotenv is required to load environment var
 const cors = require('cors'); // Import the cors package
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Middleware to serve static files
 app.use(express.static('public'));
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to handle CORS
 app.use(cors({
-    origin: 'https://frontend-2drz.onrender.com' // Allow requests from your frontend URL
+    origin: ['https://frontend-2drz.onrender.com', 'http://localhost:3000'] // Allow requests from your frontend URL and local development
 }));
 
 // Multer configuration for file uploads
@@ -70,7 +70,7 @@ app.post('/signup', upload.single('resume'), async (req, res) => {
         });
 
         await newUser.save();
-        res.redirect('index.html');
+        res.status(200).send('Success');
     } catch (err) {
         console.error('Error saving user:', err);
         res.status(500).send('Internal server error');
